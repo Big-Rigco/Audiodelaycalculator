@@ -1,15 +1,17 @@
- "delay-calculator": function(e, t) {
-                    var l,
-                        r,
-                        n = parseFloat(e[0].value),
-                        o = parseFloat(e[1].value),
-                        c = {},
-                        d = t.dist,
-                        v = t.temp;
-                    if (n || (c.distance = "Please enter a distance"), o || (c.temperature = "Please enter a temperature"), n && o) {
-                        if ("Feet" === d && (n *= .3048), l = o, "Fahrenheit" === v && (o = 5 / 9 * (o - 32)), o >= -273)
-                            return r = 331.5 * Math.sqrt((o + 273.15) / 273.15), "Delay ".concat((n * (1e3 / r)).toFixed(2), "mS in dry air at ").concat(l, "° ").concat(v);
-                        c.temperature = "Temperature must be above absolute zero"
-                    }
-                    return c
-                },
+<form name="myForm" action="" method="GET">
+  Distance(meters): <br>
+  <input type="number" name="dist" value=""> <br>
+  Tempreature(celsius): <br>
+  <input type="number" name="temp" value=""> <br>
+  <input type="button" name="button" value="Calculate" onclick="testResults(this.form)">
+<input type="reset" value="Reset">
+</form>
+
+<script>
+function testResults (form) {
+    var inputDist = form.dist.value
+    var inputTemp = form.temp.value
+   var delayTotal = inputDist/(331+(0.61*inputTemp))*1e3;
+alert ("Distance in mS: " + delayTotal.toFixed(2));
+}
+</script>
